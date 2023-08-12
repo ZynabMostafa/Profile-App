@@ -150,6 +150,7 @@ fun InsertInformationDialog(
             confirmButton = {
                 Button(onClick = {
                     onClickAdd()
+                    clear(homeViewModel)
                     onDismissClicked()
                 }) {
                     Text(text = "Add")
@@ -157,9 +158,7 @@ fun InsertInformationDialog(
             },
             dismissButton = {
                 OutlinedButton(onClick = {
-                       homeViewModel.name.value = ""
-                        homeViewModel.age.value = 0
-                        homeViewModel.jobDescription.value = ""
+                   clear(homeViewModel)
                     onDismissClicked()
                 }) {
                     Text(text = "No")
@@ -171,6 +170,11 @@ fun InsertInformationDialog(
 
 }
 
+fun clear (homeViewModel : HomeViewModel){
+    homeViewModel.name.value = ""
+    homeViewModel.age.value = 0
+    homeViewModel.jobDescription.value = ""
+}
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CardToShowList(
